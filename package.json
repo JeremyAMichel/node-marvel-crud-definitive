@@ -25,5 +25,12 @@
   "bugs": {
     "url": "https://github.com/JeremyAMichel/node-marvel-crud-definitive/issues"
   },
-  "homepage": "https://github.com/JeremyAMichel/node-marvel-crud-definitive#readme"
+  "homepage": "https://github.com/JeremyAMichel/node-marvel-crud-definitive#readme",
+  "dependencies": {
+    "@picocss/pico": "^2.0.6",
+    "express": "^4.18.3",
+    "mustache": "^4.2.0",
+    "mustache-express": "^1.3.2",
+    "mysql": "^2.18.1"
+  }
 }
