@@ -1,0 +1,29 @@
+{
+  "name": "marvelcruddefinitiveedition",
+  "version": "1.0.0",
+  "description": "Bienvenue dans le projet Marvel CRUD ! L'objectif de ce projet est de vous apprendre à créer une application web pour gérer les personnages et les équipes de l'univers Marvel en utilisant NodeJS, Express, Mustache, MySQL, Nodemon et Pico.css",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeremyAMichel/node-marvel-crud-definitive.git"
+  },
+  "keywords": [
+    "Marvel",
+    "Crud",
+    "Node",
+    "Training",
+    "Express",
+    "Mustache",
+    "MySQL",
+    "PicoCSS"
+  ],
+  "author": "Jérémy Michel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeremyAMichel/node-marvel-crud-definitive/issues"
+  },
+  "homepage": "https://github.com/JeremyAMichel/node-marvel-crud-definitive#readme"
+}
