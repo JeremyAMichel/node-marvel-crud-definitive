@@ -43,16 +43,16 @@ router
       }
     });
   })
-  .post((req, res) => {
-    const { nom, description, equipe_id } = req.body;
+  .post(upload.single('photo'), (req, res) => {
+    const { nom, description, equipe} = req.body;
     let photo = null;
     if (req.file) {
-      photo = req.file.path;
+      photo = '/img/'+ req.file.filename;
     }
 
     connexion.query(
       "INSERT INTO personnage (nom, description, equipe_id, photo) VALUES (?, ?, ?, ?)",
-      [nom, description, equipe_id, photo],
+      [nom, description, equipe, photo],
       (err, results) => {
         if (err) {
           console.log(err);
