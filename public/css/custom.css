@@ -1,0 +1,135 @@
+/* Reset CSS */
+
+/* Réinitialise les marges et les paddings */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+dl,
+dd,
+ol,
+ul,
+figure,
+hr {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Added */
+}
+
+/* Réinitialise la taille de police */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1em;
+  font-weight: normal;
+  box-sizing: border-box; /* Added */
+}
+
+/* Réinitialise les styles de liste */
+ul,
+ol {
+  list-style: none;
+  box-sizing: border-box; /* Added */
+}
+
+/* Réinitialise les styles de lien */
+a {
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box; /* Added */
+}
+
+/* Réinitialise les styles de tableau */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  box-sizing: border-box; /* Added */
+}
+
+/* Réinitialise les styles de formulaire */
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  appearance: none;
+  box-sizing: border-box; /* Added */
+}
+
+/* Réinitialise les styles d'image */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box; /* Added */
+}
+
+.personnage-details {
+  display: flex;
+  /* justify-content: space-between; */
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--pico-primary-background);
+}
+
+#main-setup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+body{
+    min-height: 100vh;
+}
+
+.personnage-details div{
+    width: 400px;
+    padding: 10px;
+}
+
+.personnage-details div img{
+    border-radius: var(--pico-border-radius);
+}
+
+.little-img{
+    width: 50px;
+    height: 50px;
+    border-radius: var(--pico-border-radius);
+}
+
+.link-hero{
+    display: flex;
+    width: 100%;
+}
+
+table tr.hover-hero:hover td,
+table tr.hover-hero:hover th{
+    background-color: var(--pico-secondary-background);
+}
+
+.form-size{
+  width: 500px;
+}

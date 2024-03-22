@@ -4,7 +4,7 @@
   "description": "Bienvenue dans le projet Marvel CRUD ! L'objectif de ce projet est de vous apprendre à créer une application web pour gérer les personnages et les équipes de l'univers Marvel en utilisant NodeJS, Express, Mustache, MySQL, Nodemon et Pico.css",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "devStart": "nodemon --ext js,pug,mustache,json index.js"
   },
   "repository": {
     "type": "git",
@@ -29,8 +29,10 @@
   "dependencies": {
     "@picocss/pico": "^2.0.6",
     "express": "^4.18.3",
+    "multer": "^1.4.5-lts.1",
     "mustache": "^4.2.0",
     "mustache-express": "^1.3.2",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "nodemon": "^3.1.0"
   }
 }

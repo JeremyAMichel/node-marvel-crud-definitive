@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark" />
+    <title>Marvel Crud</title>
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/picocss">
+  </head>
+  <body>
+    <header>
+        <a href="/">
+          <h1>Liste personnages</h1>
+        </a>
+    </header>
+    <main id="main-setup" class="container">
+      <a href="/personnages/create" style="margin-bottom: 30px;">
+        <button>
+          Ajouter un Personnage
+        </button>
+      </a>
+      <p>Cliquez sur un personnage pour consulter sa fiche détaillée.</p>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Image</th>
+            <th scope="col">Equipe</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#personnages}}
+            
+              <tr class="hover-hero">
+                <th scope="row">
+                  <a href="personnages/{{id}}" class="link-hero">
+                    {{personnage_nom}}
+                  </a>
+                </th>
+                <td>
+                  {{#photo}}
+                    <a href="personnages/{{id}}" class="link-hero">
+                      <img src="{{photo}}" class="little-img" />
+                    </a>
+                  {{/photo}}
+                  {{^photo}}
+                    <a href="personnages/{{id}}" class="link-hero">non renseignée</a>         
+                  {{/photo}}
+                </td>
+                <td>
+                  {{#equipe_nom}}
+                    <a href="personnages/{{id}}" class="link-hero">{{equipe_nom}}</a>
+                  {{/equipe_nom}}
+                  {{^equipe_nom}}             
+                    <a href="personnages/{{id}}" class="link-hero">non renseignée</a>    
+                  {{/equipe_nom}}
+                </td>
+              </tr>
+            
+          {{/personnages}}
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

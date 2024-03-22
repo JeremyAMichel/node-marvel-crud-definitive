@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light dark" />
+        <title>Marvel Crud</title>
+        <link rel="stylesheet" href="/css/custom.css">
+        <link rel="stylesheet" href="/picocss">
+    </head>
+    <body>
+        <header>
+            <a href="/">
+                <h1>Détail personnage</h1>
+            </a>
+        </header>
+        <main id="main-setup" class="container">
+            <article class="personnage-details pico-background-purple-500">
+                <h2>{{personnage.personnage_nom}}</h2>
+                {{#personnage.equipe_nom}}
+                    <h4>{{personnage.equipe_nom}}</h4>
+                {{/personnage.equipe_nom}} 
+                <div>
+                    {{#personnage.photo}}
+                        <img src="{{personnage.photo}}" alt="{{personnage.nom}}">
+                    {{/personnage.photo}}
+                </div>
+                {{#personnage.description}}
+                    <p>{{personnage.description}}</p>
+                {{/personnage.description}}    
+            </article>
+
+            <a href="/personnages">
+                <button>
+                    Retour
+                </button>
+            </a>
+        </main>
+    </body>
+</html>
