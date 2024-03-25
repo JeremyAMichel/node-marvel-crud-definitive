@@ -3,6 +3,7 @@ const connexion = require("../database");
 const router = express.Router();
 const multer = require("multer");
 const path = require("path");
+const { log } = require("console");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -43,11 +44,11 @@ router
       }
     });
   })
-  .post(upload.single('photo'), (req, res) => {
-    const { nom, description, equipe} = req.body;
+  .post(upload.single("photo"), (req, res) => {
+    const { nom, description, equipe } = req.body;
     let photo = null;
     if (req.file) {
-      photo = '/img/'+ req.file.filename;
+      photo = "/img/" + req.file.filename;
     }
 
     connexion.query(
@@ -63,8 +64,10 @@ router
     );
   });
 
-router.route("/:id").get((req, res) => {
+router.get("/:id/edit", (req, res) => {
   const id = req.params.id;
+
+  //add select equipe
   connexion.query(
     "SELECT personnage.id, personnage.nom AS personnage_nom, personnage.photo, personnage.description, equipe.nom AS equipe_nom FROM personnage LEFT JOIN equipe ON equipe.id = personnage.equipe_id WHERE personnage.id = ?",
     [id],
@@ -72,13 +75,76 @@ router.route("/:id").get((req, res) => {
       if (err) {
         console.log(err);
       } else {
-        // console.log(results);
-        res.render("personnages/personnage-details", {
-          personnage: results[0],
+        const personnage = results[0];
+
+        connexion.query("SELECT * FROM equipe", (err, results) => {
+          if (err) {
+            console.log(err);
+          } else {
+            const equipes = results.map((equipe) => ({
+              ...equipe,
+              selected: equipe.nom === personnage.equipe_nom ? 'selected' : ''
+            }));
+
+            res.render("personnages/personnage-edit-form", {
+              personnage,
+              equipes
+            });
+          }
         });
       }
     }
   );
 });
+
+router
+  .route("/:id")
+  .get((req, res) => {
+    const id = req.params.id;
+    connexion.query(
+      "SELECT personnage.id, personnage.nom AS personnage_nom, personnage.photo, personnage.description, equipe.nom AS equipe_nom FROM personnage LEFT JOIN equipe ON equipe.id = personnage.equipe_id WHERE personnage.id = ?",
+      [id],
+      (err, results) => {
+        if (err) {
+          console.log(err);
+        } else {
+          // console.log(results);
+          res.render("personnages/personnage-details", {
+            personnage: results[0],
+          });
+        }
+      }
+    );
+  })
+  .put(upload.single("photo"), (req, res) => {
+    const id = req.params.id;
+    const { nom, description, equipe } = req.body;
+    if (req.file) {
+      let newPhoto = "/img/" + req.file.filename;
+      connexion.query(
+        "UPDATE personnage SET nom = ?, description = ?, equipe_id = ?, photo = ? WHERE id = ?",
+        [nom, description, equipe, newPhoto, id],
+        (err, results) => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.redirect("/personnages");
+          }
+        }
+      );
+    } else {
+      connexion.query(
+        "UPDATE personnage SET nom = ?, description = ?, equipe_id = ? WHERE id = ?",
+        [nom, description, equipe, id],
+        (err, results) => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.redirect("/personnages");
+          }
+        }
+      );
+    }  
+  });
 
 module.exports = router;

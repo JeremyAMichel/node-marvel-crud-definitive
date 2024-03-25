@@ -3,6 +3,7 @@ const connexion = require("./database");
 const mustacheExpress = require("mustache-express");
 const path = require("path");
 const app = express();
+const methodOverride = require("method-override");
 
 /**
  * Configuration de mustache
@@ -21,6 +22,16 @@ app.set("views", __dirname + "/views");
  */
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+// app.use(methodOverride(function (req, res) {
+//   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+//     // look in urlencoded POST bodies and delete it
+//     var method = req.body._method;
+//     delete req.body._method;
+//     return method;
+//   }
+// }))
+
+app.use(methodOverride("_method"));
 
 // Servir les fichiers statiques depuis le dossier node_modules
 // app.use('/picocss', express.static(path.join(__dirname, 'node_modules/@picocss/pico/css/pico.purple.min.css')));
@@ -46,4 +57,8 @@ app.get("/", (req, res) => {
 const personnagesRouter = require("./routes/personnages");
 
 app.use("/personnages", personnagesRouter);
+
+const equipesRouter = require("./routes/equipes");
+
+app.use("/equipes", equipesRouter);
 

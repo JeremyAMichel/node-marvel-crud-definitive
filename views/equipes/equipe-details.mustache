@@ -12,29 +12,18 @@
     <body>
         <header>
             <a href="/">
-                <h1>Détail personnage</h1>
+                <h1>Détail équipe</h1>
             </a>
         </header>
         <main id="main-setup" class="container">
             <article class="personnage-details">
-                <a href="/personnages/{{personnage.id}}/edit" class="icon-edit">
+                <a href="/equipes/{{equipe.id}}/edit" class="icon-edit">
                     <i class="fa-solid fa-pencil" style="color: #ffffff;"></i>
                 </a>
-                <h2>{{personnage.personnage_nom}}</h2>
-                {{#personnage.equipe_nom}}
-                    <h4>{{personnage.equipe_nom}}</h4>
-                {{/personnage.equipe_nom}} 
-                <div>
-                    {{#personnage.photo}}
-                        <img src="{{personnage.photo}}" alt="{{personnage.nom}}">
-                    {{/personnage.photo}}
-                </div>
-                {{#personnage.description}}
-                    <p>{{personnage.description}}</p>
-                {{/personnage.description}}    
+                <h2>{{equipe.nom}}</h2>  
             </article>
 
-            <a href="/personnages">
+            <a href="/equipes">
                 <button>
                     Retour
                 </button>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark" />
+    <title>Marvel Crud</title>
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/picocss">
+  </head>
+  <body>
+    <header>
+        <a href="/">
+          <h1>Liste équipes</h1>
+        </a>
+    </header>
+    <main id="main-setup" class="container">
+      <a href="/equipes/create" style="margin-bottom: 30px;">
+        <button>
+          Ajouter une Equipe
+        </button>
+      </a>
+      <p>Cliquez sur une équipe pour consulter sa fiche détaillée.</p>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Nom</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#equipes}}
+            
+              <tr class="hover-hero">
+                <th scope="row">
+                  <a href="equipes/{{id}}" class="link-hero">
+                    {{nom}}
+                  </a>
+                </th>
+              </tr>
+            
+          {{/equipes}}
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

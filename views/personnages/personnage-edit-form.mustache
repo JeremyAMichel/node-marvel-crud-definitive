@@ -11,30 +11,36 @@
   <body>
     <header>
         <a href="/">
-            <h1>Ajoutez un Héros</h1>
+            <h1>Modifier un Héros</h1>
         </a>
     </header>
     <main id="main-setup" class="container">
-        <form class="form-size" action="/personnages/create" method="post" enctype="multipart/form-data">
+        <form class="form-size" action="/personnages/{{personnage.id}}?_method=PUT" method="POST" enctype="multipart/form-data">
             <fieldset>
+            {{! <input type="hidden" name="_method" value="PUT"> }}
                 <div>
                     <label for="nom">Nom :</label>
-                    <input type="text" id="nom" name="nom" required>
+                    <input type="text" id="nom" name="nom" value="{{personnage.personnage_nom}}" required>
                 </div>
                 <div>
                     <label for="photo">Photo :</label>
                     <input type="file" id="photo" name="photo" accept="image/*">
+                    {{#personnage.photo}}
+                    <div class="photo-preview">
+                        <img src="{{personnage.photo}}" alt="Photo du personnage">
+                    </div>
+                    {{/personnage.photo}}
                 </div>
                 <div>
                     <label for="description">Description :</label>
-                    <textarea id="description" name="description"></textarea>
+                    <textarea id="description" name="description">{{personnage.description}}</textarea>
                 </div>
                 <div>
                     <label for="equipe">Équipe :</label>
                     <select id="equipe" name="equipe">
                         <option value="">Aucune</option>
                         {{#equipes}}
-                            <option value="{{id}}">{{nom}}</option>
+                            <option value="{{id}}" {{selected}}>{{nom}}</option>
                         {{/equipes}}
                     </select>
                 </div>
@@ -43,7 +49,7 @@
                 <a href="/personnages">
                     Retour
                 </a>
-                <input type="submit" value="Ajouter">
+                <input type="submit" value="Modifier">
             </div>
         </form>
 

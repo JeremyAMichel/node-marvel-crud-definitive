@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark" />
+    <title>Marvel Crud</title>
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/picocss">
+  </head>
+  <body>
+    <header>
+        <a href="/">
+            <h1>Modifier une Equipe</h1>
+        </a>
+    </header>
+    <main id="main-setup" class="container">
+        <form class="form-size" action="/equipes/{{equipe.id}}?_method=PUT" method="POST">
+            <fieldset>
+                {{! <input type="hidden" name="_method" value="PUT"> }}
+                <div>
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" name="nom" value="{{equipe.nom}}" required>
+                    {{#error}}
+                        <p class="error">{{error}}</p>
+                    {{/error}}
+                </div>
+            </fieldset>
+            <div class="create-form-buttons">
+                <a href="/equipes/{{equipe.id}}">
+                    Retour
+                </a>
+                <input type="submit" value="Modifier">
+            </div>
+        </form>
+
+    </main>
+  </body>
+</html>
