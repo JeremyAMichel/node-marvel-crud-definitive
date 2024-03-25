@@ -17,9 +17,14 @@
         </header>
         <main id="main-setup" class="container">
             <article class="personnage-details">
-                <a href="/personnages/{{personnage.id}}/edit" class="icon-edit">
-                    <i class="fa-solid fa-pencil" style="color: #ffffff;"></i>
-                </a>
+                <div class="icon-edit">
+                    <a href="/personnages/{{personnage.id}}/edit">
+                        <i class="fa-solid fa-pencil" style="color: #ffffff;"></i>
+                    </a>
+                    <a href="/personnages/{{personnage.id}}/delete">
+                        <i class="fa-solid fa-trash" style="color: #f1326b;"></i>
+                    </a>
+                </div>
                 <h2>{{personnage.personnage_nom}}</h2>
                 {{#personnage.equipe_nom}}
                     <h4>{{personnage.equipe_nom}}</h4>

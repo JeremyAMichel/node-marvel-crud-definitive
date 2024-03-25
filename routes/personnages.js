@@ -2,8 +2,9 @@ const express = require("express");
 const connexion = require("../database");
 const router = express.Router();
 const multer = require("multer");
+const fs = require("fs");
 const path = require("path");
-const { log } = require("console");
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -90,6 +91,38 @@ router.get("/:id/edit", (req, res) => {
               personnage,
               equipes
             });
+          }
+        });
+      }
+    }
+  );
+});
+
+router.get("/:id/delete", (req, res) => {
+  const id = req.params.id;
+  connexion.query(
+    "SELECT photo FROM personnage WHERE id = ?",
+    [id],
+    (err, results) => {
+      if (err) {
+        console.log(err);
+      } else {
+        const photo = results[0].photo;
+        fs.unlink(path.join("public", photo), (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            connexion.query(
+              "DELETE FROM personnage WHERE id = ?",
+              [id],
+              (err, results) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  res.redirect("/personnages");
+                }
+              }
+            );
           }
         });
       }

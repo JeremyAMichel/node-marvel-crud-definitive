@@ -35,6 +35,21 @@ router.get("/:id/edit", (req, res) => {
     );
 });
 
+router.get("/:id/delete", (req, res) => {
+    const id = req.params.id;
+    connexion.query(
+        "DELETE FROM equipe WHERE id = ?",
+        [id],
+        (err, results) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.redirect("/equipes");
+            }
+        }
+    );
+});
+
 router
   .route("/create")
   .get((req, res) => {
