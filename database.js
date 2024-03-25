@@ -1,5 +1,5 @@
 // Importer le module MySQL
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
 // Créer une connexion à la base de données en utilisant les paramètres de connexion
 // https://www.npmjs.com/package/mysql#introduction
